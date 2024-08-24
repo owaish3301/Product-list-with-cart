@@ -53,13 +53,16 @@
     <section class="w-full md:w-2/5 bg-white p-4 h-max rounded-md">
       <!-- this section is for cart items -->
       <header>
-        <h1 class="text-3xl font-bold font-red-hat text-red">Your Cart (0) </h1>
+        <h1 class="text-3xl font-bold font-red-hat text-red">Your Cart (<span id="total-cart-items">0</span>) </h1>
       </header>
 
       <article>
         <div class="empty-cart-items mt-4">
           <img src="./assets/images/illustration-empty-cart.svg" alt="" class="empty-cart-image m-auto">
           <p class="text-rose-400 font-semibold font-red-hat text-center">Your added items will appear here</p>
+        </div>
+        <div class="cart-items-nonempty">
+
         </div>
       </article>
     </section>

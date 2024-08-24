@@ -1,4 +1,5 @@
 import { cartItems, fetchDataFromJson } from "./items_loader.js";
+import { addToCart } from "./add_to_cart.js";
 
 function updateCartButton(cartButton) {
     cartButton.classList.remove("border-rose-300", "border-2", "bg-white", "hover:cursor-pointer");
@@ -39,22 +40,27 @@ function decrementHandler(cartButton) {
                 <img src="./assets/images/icon-add-to-cart.svg">
                 <p>Add to cart</p>
               `;
-              
+
         initializeCartEventListeners(cartButton);
     }
     else if (cartItems[cartButton.id].quantity > 1) {
         cartItems[cartButton.id].quantity--;
         updateCartButton(cartButton);
     }
+    addToCart()
 }
 
 function incrementHandler(cartButton) {
     cartItems[cartButton.id].quantity++;
     updateCartButton(cartButton);
+    addToCart()
 }
 
 function initializeCartEventListeners(cartButton) {
-    cartButton.addEventListener("click", () => addToCartHandler(cartButton), { once: true });
+    cartButton.addEventListener("click", () => {
+        addToCartHandler(cartButton), { once: true };
+        addToCart()
+    });
 }
 
 // Main initialization function
