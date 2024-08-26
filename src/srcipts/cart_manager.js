@@ -56,7 +56,7 @@ function incrementHandler(cartButton) {
     addToCart(cartButton.id)
 }
 
-function initializeCartEventListeners(cartButton) {
+export function initializeCartEventListeners(cartButton) {
     cartButton.addEventListener("click", () => {
         addToCartHandler(cartButton); 
         addToCart(cartButton.id);

@@ -75,7 +75,7 @@
                 <p class="final-price text-rose-400 font-red-hat"> $5.50 </p>
               </div>
             </div>
-            <div class="cross-button-container h-max w-max self-center hidden">
+            <div class="cross-button-container h-max w-max self-center hidden hover:cursor-pointer">
               <img src="./assets/images/icon-remove-item.svg" alt="" class="remove-all p-1 border-2 border-rose-400 rounded-full">
             </div>
           </div>
@@ -90,15 +90,15 @@
             <img src="./assets/images/icon-carbon-neutral.svg" alt="">
             <p class="text-center font-red-hat">This is a <span class="font-semibold">carbon-neutral</span> delivery</p>
           </div>
-          <div class="confirm-btn">
-            <button class="text-white bg-red w-full mt-4 pt-4 pb-4 rounded-3xl">Confirm Order</button>
+          <div class="confirm-btn-container">
+            <button id="confirm-order" class="text-white bg-red w-full mt-4 pt-4 pb-4 rounded-3xl">Confirm Order</button>
           </div>
         </div>
       </article>
     </section>
   </main>
-  
   <script type="module" src="./src/srcipts/items_loader.js"></script>
   <script type="module" src="./src/srcipts/cart_manager.js"></script>
+  <script type="module" src="./src/srcipts/order_confirmation.js"></script>
 </body>
 </html>

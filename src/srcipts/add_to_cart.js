@@ -1,14 +1,17 @@
 import { cartItems } from "./items_loader";
+import { initializeCartEventListeners } from "./cart_manager";
 
 const currentCartDisplay = [];
 
 export const addToCart = (id) => {
     let totalCartItems = 0;
+    let totalPrice = 0;
     for (let i = 0; i< cartItems.length; i++){
         const cartQuantity = cartItems[i].quantity;
         totalCartItems = totalCartItems + cartQuantity;
+        totalPrice = totalPrice + (cartQuantity * cartItems[i].price)
     };
-
+ 
 
     const emptyCartContainer = document.querySelector(".empty-cart-items");
     const orderConfirmationSection = document.querySelector(".order-total-container");
@@ -42,7 +45,7 @@ export const addToCart = (id) => {
                 <p class="final-price text-rose-400 font-red-hat" id="cart-final-price-${id}"> $${cartItems[id].quantity * cartItems[id].price} </p>
               </div>
             </div>
-            <div class="cross-button-container h-max w-max self-center">
+            <div class="cross-button-container-${id} h-max w-max self-center hover:cursor-pointer">
               <img src="./assets/images/icon-remove-item.svg" alt="" class="remove-all p-1 border-2 border-rose-400 rounded-full">
             </div>
         `;
@@ -51,6 +54,13 @@ export const addToCart = (id) => {
         const lineElem = document.createElement("hr");
         itemContainer.after(lineElem);
         currentCartDisplay.push(id);
+
+        const crossButton = document.querySelector(`.cross-button-container-${id}`);
+        crossButton.addEventListener("click", handleCrossButton);
+
+        function handleCrossButton () {
+            turnTheQuantityToZero(id)
+        };
     } else{
         if(cartItems[id].quantity === 0) {
             const elemToRemove = document.querySelector(`#cartItem-display-${id}`);
@@ -67,4 +77,23 @@ export const addToCart = (id) => {
             finalPriceDisplay.innerText = `$${cartItems[id].quantity * cartItems[id].price}`;
         };
     };
+
+    const finalPrice = document.querySelector("#final-amount");
+    finalPrice.innerText = "$" + totalPrice;
+}
+
+
+function turnTheQuantityToZero (id) {
+    cartItems[id].quantity = 0;
+    addToCart(id);
+    const cartButton = document.getElementById(`${id}`);
+    cartButton.classList.add("border-rose-300", "border-2", "bg-white", "hover:cursor-pointer");
+    cartButton.classList.remove("bg-red");
+    cartButton.innerHTML = `
+        <img src="./assets/images/icon-add-to-cart.svg">
+        <p>Add to cart</p>
+        `;
+
+    initializeCartEventListeners(cartButton);
+    
 }
