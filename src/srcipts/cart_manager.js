@@ -47,20 +47,20 @@ function decrementHandler(cartButton) {
         cartItems[cartButton.id].quantity--;
         updateCartButton(cartButton);
     }
-    addToCart()
+    addToCart(cartButton.id)
 }
 
 function incrementHandler(cartButton) {
     cartItems[cartButton.id].quantity++;
     updateCartButton(cartButton);
-    addToCart()
+    addToCart(cartButton.id)
 }
 
 function initializeCartEventListeners(cartButton) {
     cartButton.addEventListener("click", () => {
-        addToCartHandler(cartButton), { once: true };
-        addToCart()
-    });
+        addToCartHandler(cartButton); 
+        addToCart(cartButton.id);
+    }, { once: true });
 }
 
 // Main initialization function
