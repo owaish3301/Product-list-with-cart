@@ -2,7 +2,7 @@ export let cartItems = [];
 
 export async function fetchDataFromJson() {
     try {
-        const response = await fetch("/data.json");
+        const response = await fetch("./data.json");
         const productData = await response.json();
         layoutContent(productData);
         return true; // Indicate successful loading
