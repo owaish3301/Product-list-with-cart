@@ -1,7 +1,7 @@
 import { cartItems } from "./items_loader";
 import { initializeCartEventListeners } from "./cart_manager";
 
-const currentCartDisplay = [];
+export const currentCartDisplay = [];
 
 export const addToCart = (id) => {
     let totalCartItems = 0;
@@ -59,7 +59,7 @@ export const addToCart = (id) => {
         crossButton.addEventListener("click", handleCrossButton);
 
         function handleCrossButton () {
-            turnTheQuantityToZero(id)
+            turnTheQuantityToZero(id);
         };
     } else{
         if(cartItems[id].quantity === 0) {
