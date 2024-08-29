@@ -63,40 +63,28 @@
       </article>
     </section>
 
-    <div id="orderConfirmationOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-      <div class="bg-white rounded-lg p-6 max-w-md w-full">
+    <div id="orderConfirmationOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden overflow-y-auto">
+      <div class="bg-white rounded-lg p-6 max-w-md w-full my-8">
         <div class="flex flex-col mb-6">
           <img src="./assets/images/icon-order-confirmed.svg" alt="" class="w-12 h-12">
           <h2 class="mt-4 text-3xl font-red-hat font-bold text-gray-800">Order Confirmed</h2>
           <p class="text-rose-400">We hope you enjoy your food!</p>
         </div>
     
-        <div id="confirmedOrderList" class="space-y-4 mb-6 bg-rose-100 rounded-md p-4">
+        <div id="confirmedOrderList-container" class=" mb-6 bg-rose-100 rounded-md p-4 max-h-60 overflow-y-auto">
           <!-- Order items will be inserted here dynamically -->
-          <!-- <div class="flex justify-between items-center">
-            <div class="flex items-center">
-              <img src="./assets/images/image-tiramisu-thumbnail.jpg" alt="" class="w-12 h-12 object-cover rounded-md mr-3">
-              <div>
-                <p class="font-semibold text-gray-800 truncate w-min max-w-[160px] md:max-w-[180px] lg:max-w-[190px]">Classic Tiramisu</p>
-                <p class="text-sm text-red w-max inline">1x</p>
-                <p class="text-sm text-rose-400 w-max inline ml-2">@$5.50</p>
-              </div>
-            </div>
-            <p class="font-semibold text-gray-800">$5.50</p>
-          </div>
-          <hr> -->
+          <div id="confirmedOrderList" class="space-y-4">
 
-        </div>
-        <div class="mb-6">
-          <div class="flex justify-between items-center">
-            <p class="text-rose-400 font-red-hat">Order Total</p>
-            <p id="orderTotalAmount" class="text-xl font-bold text-gray-800">$46.50</p>
+          </div>
+          <div class="mt-6">
+            <div class="flex justify-between items-center">
+              <p class="text-rose-400 font-red-hat">Order Total</p>
+              <p id="orderTotalAmount" class="text-xl font-bold text-gray-800">$<span id="confirm-order-sum-total">46.50</span></p>
+            </div>
           </div>
         </div>
-    
-        
-    
-        <button id="startNewOrderBtn" class="w-full bg-red-600 text-white py-3 rounded-full font-semibold hover:bg-red-700 transition duration-300">
+ 
+        <button id="startNewOrderBtn" class="w-full bg-red text-white py-3 rounded-full font-red-hat font-semibold">
           Start New Order
         </button>
       </div>
@@ -106,5 +94,6 @@
   <script type="module" src="./src/srcipts/items_loader.js"></script>
   <script type="module" src="./src/srcipts/cart_manager.js"></script>
   <script type="module" src="./src/srcipts/order_confirmation.js"></script>
+  <script type="module" src="./src/srcipts/startNewOrder.js"></script>
 </body>
 </html>

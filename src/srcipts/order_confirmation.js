@@ -2,25 +2,17 @@ import { cartItems } from "./items_loader";
 import { currentCartDisplay } from "./add_to_cart";
 
 const orderConfirmationButton = document.querySelector("#confirm-order");
+let totalPrice = 0;
 
 const confirmationHandler = () => {
     const orderConfirmed = document.querySelector("#orderConfirmationOverlay");
-    getOrderItemsInfo()
+    getOrderItemsInfo();
+    document.querySelector("#confirm-order-sum-total").innerText = totalPrice;
     orderConfirmed.classList.remove("hidden");
 };
 
 
 function getOrderItemsInfo() {
-  // for(let items of cartItems){
-  //   const quantity = items.quantity;
-  //   if(quantity !== 0){
-  //     const thumbnail = items.thumbnail;
-  //     const name = items.name;
-  //     const price = items.price;
-      
-  //   }
-  // }
-
   for (let index of currentCartDisplay){
     const quantity = cartItems[index].quantity;
     if (quantity !== 0){
@@ -28,10 +20,11 @@ function getOrderItemsInfo() {
       const name = cartItems[index].name;
       const price = cartItems[index].price;
 
-      addItemsToConfirmationLists(thumbnail, name, quantity, price)
-    }
-  }
-}
+      addItemsToConfirmationLists(thumbnail, name, quantity, price);
+      totalPrice = totalPrice + (price*quantity);
+    };
+  };
+};
 
 
 export function addItemsToConfirmationLists(thumbnail, name, quantity, price){
