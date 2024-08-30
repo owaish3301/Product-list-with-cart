@@ -30,6 +30,8 @@ Users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
+# Added an additional backend and getting the cart data from the backend using fetch api.
+
 ### Screenshot
 
 ![Design preview for the Product list with cart coding challenge](./preview.jpg)
@@ -52,13 +54,13 @@ Users should be able to:
 - Vanilla JavaScript
 
 ### What I learned
+- I learned about using fetch api to get data from backend with get requests
 - I learned more about position: fixed
 - I learned about ellipsis
 - Gained more experience with Tailwind CSS
 - Improved my JavaScript skills, particularly in Readind data from file, DOM manipulation and event handling
 
 ### Continued development
-- I plan to create another version of this project which will provide data of cart items from the backend using Express.
 - I also want to add cookies to remember which items were added to the cart so when the user comes back, their progress will be saved.
 
 ### Useful resources
