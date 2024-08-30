@@ -2,15 +2,31 @@ export let cartItems = [];
 
 export async function fetchDataFromJson() {
     try {
-        const response = await fetch("./data.json");
+        const response = await fetch("http://product-list-with-cart-backend.vercel.app/api");
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+            throw new TypeError("Oops, we haven't got JSON!");
+        }
+        
         const productData = await response.json();
+        
+        if (!Array.isArray(productData) || productData.length === 0) {
+            throw new Error("Data is not in the expected format");
+        }
+        
         layoutContent(productData);
-        return true; // Indicate successful loading
+        return true;    
     } catch (error) {
-        console.log("Error in reading json file: ", error);
+        console.error("Error in fetching data:", error);
         return false;
     }
 }
+
 
 function layoutContent(productData) {
     const productContainer = document.querySelector(".product-container");
