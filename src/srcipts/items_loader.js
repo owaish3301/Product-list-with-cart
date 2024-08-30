@@ -2,25 +2,31 @@ export let cartItems = [];
 
 export async function fetchDataFromJson() {
     try {
-        const response = await fetch("http://product-list-with-cart-backend.vercel.app/api");
+        const API_URL = process.env.REACT_APP_API_URL || "https://product-list-with-cart-backend.vercel.app/api";
+        console.log("Fetching from:", API_URL);
+
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        });
+        
+        console.log("Response:", response);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        const contentType = response.headers.get("content-type");
-        if (!contentType || !contentType.includes("application/json")) {
-            throw new TypeError("Oops, we haven't got JSON!");
-        }
-        
         const productData = await response.json();
+        console.log("Product Data:", productData);
         
         if (!Array.isArray(productData) || productData.length === 0) {
             throw new Error("Data is not in the expected format");
         }
         
         layoutContent(productData);
-        return true;    
+        return true;
     } catch (error) {
         console.error("Error in fetching data:", error);
         return false;
