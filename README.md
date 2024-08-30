@@ -40,7 +40,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://www.frontendmentor.io/solutions/product-list-with-cart-p0BQRFFC6c](https://www.frontendmentor.io/solutions/product-list-with-cart-p0BQRFFC6c)
-- Live Site URL: [https://product-list-cart-21.netlify.app/](https://product-list-cart-21.netlify.app/)
+- Live Site URL: [https://product-cart-with-express.netlify.app/](https://product-cart-with-express.netlify.app/)
 
 ## My process
 
